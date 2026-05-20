@@ -1,135 +1,114 @@
-# 🧠 Smart Waste Segregation and Optimization System
+<h1 align="center">Waste-Segmentation-CNN</h1>
 
-## 📌 Project Overview
+<p align="center">
+  <strong>Smart waste classification and route optimization prototype.</strong><br>
+  Combines a CNN-style image classifier, Flask web interface, bin status simulation, route logic, report, presentation, and RAPTOR flowchart.
+</p>
 
-The Smart Waste Segregation and Optimization System is a modular, intelligent framework designed to automate the classification of waste and optimize collection logistics in urban environments. This project integrates machine learning, sensor-based monitoring, and algorithmic route planning to address real-world challenges in waste management. It is built with educational clarity in mind, making it ideal for student learning, technical panels, and smart city prototypes.
 
-The system is divided into distinct modules—each logically integrated and independently testable—ensuring scalability, maintainability, and pedagogical value.
+<p align="center">
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/AjaySoni-Dev/Waste-Segmentation-CNN?style=social">
+  <img alt="GitHub forks" src="https://img.shields.io/github/forks/AjaySoni-Dev/Waste-Segmentation-CNN?style=social">
+</p>
 
-## 🎯 Objectives
+<p align="center">
+  <img alt="status: prototype" src="https://img.shields.io/badge/status-prototype-blue">
+  <img alt="stack: Python / Notebook" src="https://img.shields.io/badge/stack-Python%20/%20Notebook-informational">
+  <img alt="license: MIT" src="https://img.shields.io/badge/license-MIT-green">
 
-- ✅ Automated Waste Classification using CNN.
-- ✅ Real-Time Bin Monitoring via sensors.
-- ✅ Route Optimization using graph algorithms.
-- ✅ Flowchart-based educational logic.
-- ✅ Scalable deployment from classroom to city.
+</p>
 
-## 🧩 System Architecture
+<p align="center">
+  <a href="#overview">Overview</a> ·
+  <a href="#implemented-components">Implemented Components</a> ·
+  <a href="#repository-structure">Repository Structure</a> ·
+  <a href="#run-locally">Run Locally</a> ·
+  <a href="#limitations">Limitations</a>
+</p>
 
-### 🔍 Waste Classification Module
-- Input: Waste image.
-- Model: CNN (TensorFlow/Keras).
-- Output: Category (Organic, Recyclable, Hazardous).
+---
 
-### 📡 Bin Monitoring Module
-- Hardware: Ultrasonic/IR sensors + Arduino/ESP32.
-- Logic: Threshold-based detection.
-- Output: Bin status for route planning.
+## Overview
 
-### 🧭 Route Optimization Module
-- Input: Bin status + GPS.
-- Algorithm: Dijkstra or Greedy.
-- Output: Optimized route.
+**Waste-Segmentation-CNN** is a student prototype for intelligent waste management. The repository focuses on three connected ideas:
 
-### 🧠 Flowchart Logic (Raptor)
-- Tool: Raptor.
-- Features: Modular blocks with comments.
-- Logic: Classification → Monitoring → Routing → Dispatch.
+1. classify waste images,
+2. track simulated bin status,
+3. generate a simple collection route based on bin conditions.
 
-## 🛠️ Technologies Used
+The uploaded repository contains a notebook-based Flask interface, documentation files, a project presentation, a report, and a RAPTOR flowchart. It is best described as a **working educational prototype** rather than a finished production waste-management platform.
 
-| Component              | Technology                     |
-|------------------------|--------------------------------|
-| Image Classification   | Python, TensorFlow/Keras       |
-| Bin Monitoring         | Arduino/ESP32 + Sensors        |
-| Route Optimization     | Python (NetworkX / Custom)     |
-| Flowchart Design       | Raptor                         |
-| Communication Protocol | Serial / MQTT                  |
-| Documentation          | Markdown, GitHub               |
+## Implemented Components
 
-## 📂 Folder Structure
+| Component | Current Implementation |
+|---|---|
+| Image classification | `web_interface.ipynb` defines a CNN model structure and image transformation flow using PyTorch/TorchVision. |
+| Web interface | Flask routes are created inside the notebook for upload/classification and API-style status calls. |
+| Bin monitoring | Simulated bin status logic is included in the notebook. |
+| Route optimization | Basic route-selection logic is implemented for demonstration. |
+| Documentation | Includes report PDF, PPTX presentation, and RAPTOR flowchart file. |
+| Educational explanation | The report and slides explain the waste management problem, objectives, architecture, and future direction. |
 
-SmartWasteSegregation/
-├── dataset/
-│   ├── organic/
-│   ├── recyclable/
-│   └── hazardous/
-├── model/
-│   └── cnn_model.h5
-├── bin_monitoring/
-│   └── sensor_logic.ino
-├── route_optimization/
-│   └── optimizer.py
-├── flowchart/
-│   └── smart_waste.rap
-├── docs/
-│   └── presentation.pdf
-├── utils/
-│   └── preprocessing.py
-└── README.md
+## Repository Structure
 
-## 📈 Results & Performance
+| File | Purpose |
+|---|---|
+| `web_interface.ipynb` | Main notebook containing Flask app, CNN model structure, classification route, bin status route, and route logic. |
+| `project-report.pdf` | Project report explaining problem, objectives, methodology, and proposed system. |
+| `project-ppt.pptx` | 16-slide project presentation. |
+| `flow-chart.rap` | RAPTOR flowchart file for logic representation. |
+| `README.md` | Original project documentation. |
+| `LICENSE` | MIT license. |
 
-- Classification Accuracy: ~92%
-- Sensor Response Time: < 1 second
-- Route Optimization: 30% faster in simulation
-- Educational Impact: Used in workshops and demos
+## How It Works
 
-## 🧠 Educational Value
+```text
+Image is uploaded
+        ↓
+Notebook web interface receives image
+        ↓
+Image is transformed for model input
+        ↓
+CNN-style model produces a class prediction
+        ↓
+Bin status is updated/simulated
+        ↓
+Route endpoint returns a simple optimized collection path
+```
 
-- Modular logic for student clarity.
-- Flowchart annotations for teaching.
-- Real-world relevance to sustainability.
-- Ideal for hackathons and college submissions.
+## Run Locally
 
-## 🚀 How to Run
+Install the required libraries:
 
-1. Clone the Repository:
-   git clone https://github.com/yourusername/SmartWasteSegregation.git
+```bash
+pip install torch torchvision flask pillow numpy nest_asyncio
+```
 
-2. Run the Classifier:
-   python classify.py --image sample.jpg
+Open the notebook:
 
-3. Simulate Bin Monitoring:
-   Upload sensor_logic.ino to microcontroller.
+```bash
+jupyter notebook web_interface.ipynb
+```
 
-4. Execute Route Optimization:
-   python optimizer.py --bins bin_data.json
+Run the cells in order. The notebook starts a Flask app from inside the notebook environment.
 
-5. View Flowchart Logic:
-   Open smart_waste.rap in Raptor.
+## Limitations
 
-## 📚 References
+- The current repo does not include a full training dataset.
+- The CNN model is defined for demonstration; production accuracy depends on real training data and saved weights.
+- Flask inside a notebook is useful for demos but should be moved into a standalone `app.py` for a cleaner project.
+- Route optimization is simplified and not connected to real maps or live IoT sensors.
+- RAPTOR, report, and PPT files are valuable for presentation, but the codebase needs more modular Python files for long-term maintainability.
 
-- TensorFlow: https://www.tensorflow.org/
-- Raptor: https://raptor.martincarlisle.com/
-- Smart Waste Studies: https://ieeexplore.ieee.org/
-- Arduino Docs: https://docs.arduino.cc/
+## Recommended Improvements
 
-## 🙌 Acknowledgements
+- Convert the notebook into a proper Flask project structure.
+- Add dataset download instructions or sample images.
+- Save and load trained model weights.
+- Add screenshots of the web interface.
+- Add a `requirements.txt` file.
+- Separate classification, bin monitoring, and routing into modules.
 
-Thanks to:
-- Faculty mentors
-- Open-source contributors
-- Peer testers
-- Sustainability educators
+## License
 
-## 📬 Contact
-
-Ajay  
-📧 your.email@example.com  
-🔗 LinkedIn: https://linkedin.com/in/yourprofile  
-🌐 Portfolio: https://yourwebsite.com  
-📍 Location: Hasanganj, UP, India
-
-## 🧪 Future Enhancements
-
-- GPS tracking integration
-- Mobile app interface
-- Expanded dataset
-- Edge deployment
-- Predictive analytics
-
-## 🧾 License
-
-MIT License. See LICENSE.md for details.
+This project is licensed under the MIT License.
